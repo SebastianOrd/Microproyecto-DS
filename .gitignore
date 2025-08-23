@@ -1,0 +1,26 @@
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+env/
+
+# Cachés y compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Archivos de DVC
+.dvc/tmp/
+.dvc/cache/
+
+# Archivos de datos procesados (mantener solo los .dvc)
+data/processed/*
+!data/processed/.gitkeep

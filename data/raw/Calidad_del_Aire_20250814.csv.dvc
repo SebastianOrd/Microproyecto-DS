@@ -1,0 +1,5 @@
+outs:
+- md5: a96e5ccf07941b0e56cd3453065b9101
+  size: 291813
+  hash: md5
+  path: Calidad_del_Aire_20250814.csv
