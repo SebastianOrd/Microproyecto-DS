@@ -40,25 +40,27 @@ Licencia de datos: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0
 
 ## Estructura del repositorio
 
-├── data
-│   ├── raw/                # Datos originales (solo lectura)
-│   └── processed/          # Datos enriquecidos/intermedios
+```
+├──data/
+│   ├── raw/                  # Datos originales (solo lectura)
+│   ├── processed/            # Datos enriquecidos/intermedios
 ├── notebooks/
-│   ├── 01_eda.ipynb        # EDA principal con 7 gráficas + resúmenes
-│   └── 02_boxplots.ipynb   # Enfoque en boxplots por mes y día de la semana
+│   ├── 01_eda.ipynb      # EDA principal con gráficas + resúmenes
 ├── src/
-│   ├── eda.py              # Script principal que genera todas las tablas y figuras
-│   └── boxplots.py         # Script específico para boxplots
+│   ├── eda.py            # Script principal en python
 ├── reports/
-│   ├── figures/            # Imágenes exportadas (PNG)
+│   ├── figures/          # Imágenes exportadas
 │   ├── resumen_por_municipio.csv
 │   └── resumen_por_estacion.csv
 ├── docs/
-│   └── EDA_resumen.md      # Hallazgos y notas de análisis
+│   ├── EDA_resumen.md    # Hallazgos y notas de análisis EDA
+|   ├── contexto_alcance  # objetivos y alcance proyecto
+|   ├── Entrega_1.docx    #Documento de la primera entrega de la materia
 ├── .gitignore
-├── requirements.txt        # Dependencias mínimas
-├── Makefile                # Comandos rápidos (ej. make eda)
-└── README.md               # Este archivo
+├── requirements.txt      # Dependencias mínimas
+└── README.md             # Este archivo
+```
+
 ---
 ## Requisitos
 
@@ -77,14 +79,20 @@ Proyecto probado en Python 3.12
    cd Microproyecto-DS
 
    
-2.	Crear y activar entorno virtual:   
+2.	Crear y activar entorno virtual:
+    ```   
     python3 -m venv .venv
     source .venv/bin/activate
     pip install -r requirements.txt
+    ```
 
 3.	Obtener los datos desde el remoto S3 (DVC):
+    ```
     dvc pull
+    ```
 
 4. para trabajar con jupyternotebook en el entorno virtual
+    ```
     python -m ipykernel install --user --name=venv --display-name "Python (venv)"
     jupyter notebook
+    ```

@@ -1,0 +1,6 @@
+Nombre de la columna,Descripción,Nombre del campo API,Tipo de dato,Unidades
+Municipio,Municipio de toma del material particulado,municipio,Texto,--
+Estacion,Ubicación de la estación en el municipio,estacion,Texto,--
+Fecha,Fecha de toma del material particulado,fecha,Marca de tiempo variable,AAAA-MM-DD
+Diametro aerodinamico,Micrómetros del diámetro aerodinámico (PM10 o PM2.5),diametro_aerodinamico,Texto,µm
+Medicion,Valor del material particulado,medicion,Número,µg/m³
