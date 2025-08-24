@@ -23,4 +23,5 @@ __pycache__/
 
 # Archivos de datos procesados (mantener solo los .dvc)
 data/processed/*
+!data/processed/*.dvc
 !data/processed/.gitkeep
