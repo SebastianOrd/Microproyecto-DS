@@ -1,0 +1,5 @@
+outs:
+- md5: 33e23390a8ed4efde8433a859e97df7c
+  size: 321666
+  hash: md5
+  path: Calidad_del_Aire_enriquecido.csv
