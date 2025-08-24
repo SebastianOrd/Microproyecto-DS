@@ -1,14 +1,14 @@
 # 🌍 Proyección de Calidad de Aire en Risaralda
 
-Este repositorio contiene el código, datos y documentación del microproyecto **“Proyección de calidad de aire utilizando partículas PM10 en Risaralda, Colombia”**, desarrollado como parte del curso de Desarrollo de Soluciones de la maestria MAIA de la Universidad de los Andes
+Este repositorio contiene el código, datos y documentación del microproyecto **“Proyección de calidad de aire utilizando partículas PM10 y PM2.5 en Risaralda, Colombia”**, desarrollado como parte del curso de Desarrollo de Soluciones de la maestria MAIA de la Universidad de los Andes
 
 ---
 
 ## Resumen
 
-La calidad del aire es un factor determinante para la salud y el bienestar de las personas. En el departamento de Risaralda (Colombia), el material particulado **PM10** es uno de los principales contaminantes, asociado a problemas respiratorios y cardiovasculares.  
+La calidad del aire es un factor determinante para la salud y el bienestar de las personas. En el departamento de Risaralda (Colombia), los material particulados **PM10 y PM2.5** son unos de los principales contaminantes, asociados a problemas respiratorios y cardiovasculares.  
 
-Este proyecto utiliza **datos históricos (2007–2023)** de monitoreo de calidad del aire, proporcionados por la **Corporación Autónoma Regional de Risaralda**, para proyectar concentraciones futuras de PM10.  
+Este proyecto utiliza **datos históricos (2007–2023)** de monitoreo de calidad del aire, proporcionados por la **Corporación Autónoma Regional de Risaralda**, para proyectar concentraciones futuras de PM10 y PM2.5.  
 
 El propósito es **anticipar escenarios de riesgo** y ofrecer insumos para la gestión ambiental y la toma de decisiones.
 
@@ -20,7 +20,7 @@ El propósito es **anticipar escenarios de riesgo** y ofrecer insumos para la ge
 Desarrollar una aplicación que permita identificar las posibles tendencias del comportamiento de la calidad del aire en Risaralda.
 
 ### Objetivos específicos
-- Entrenar un **modelo de aprendizaje automático** que estime concentraciones futuras de PM10.  
+- Entrenar un **modelo de aprendizaje automático** que estime concentraciones futuras de PM10 y PM2.5.  
 - Implementar una aplicación interactiva para seleccionar rangos de fechas y visualizar proyecciones.  
 - Generar documentación y repositorio abierto con datos procesados, scripts y resultados.  
 
