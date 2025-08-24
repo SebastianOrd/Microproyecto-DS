@@ -37,17 +37,6 @@ Archivo: `reports/resumen_por_municipio.csv`
 - Pereira presenta la mayor variabilidad (desviación estándar = 15.47).  
 - Se detectan valores atípicos con concentraciones superiores a 100 µg/m³.  
 
-## Estadísticas descriptivas por estación
-Archivo: `reports/resumen_por_estacion.csv`
-
-| Estación              | Media | Std   | Min | 25%  | 50%  | 75%  | Max   |
-|-----------------------|-------|-------|-----|------|------|------|-------|
-| Balalaika             | 30.18 | 17.17 | 1.0 | 15.36| 28.80| 40.82| 116.0 |
-| Centro                | 28.59 | 15.47 | 0.0 | 18.94| 25.58| 34.93| 149.59|
-| Centro Urbano         | 30.57 | 14.04 | 3.65| 18.95| 30.24| 40.10| 75.16 |
-| Cuenca Río Risaralda  | 22.80 | 10.55 | 0.0 | 15.61| 21.40| 27.87| 73.31 |
-
----
 
 ## Visualizaciones generadas
 

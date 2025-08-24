@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-EDA completo para Calidad del Aire (PM10) con generación de:
+EDA completo para Calidad del Aire con generación de:
 - Tablas descriptivas (por municipio y por estación)
 - Histogramas por municipio
 - Serie temporal por estación
@@ -82,7 +82,7 @@ def save_tables(df: pd.DataFrame) -> None:
 
 
 def fig_hist_por_municipio(df: pd.DataFrame) -> None:
-    """Histogramas de PM10 por municipio."""
+    """Histogramas de mediciones por municipio."""
     df.hist(
         column="Medicion",
         by="Municipio",
@@ -92,18 +92,18 @@ def fig_hist_por_municipio(df: pd.DataFrame) -> None:
         sharex=True,
         sharey=True,
     )
-    plt.suptitle("Distribución de mediciones PM10 por Municipio")
+    plt.suptitle("Distribución de mediciones por Municipio")
     plt.savefig(os.path.join(FIGS, "hist_medicion_por_municipio.png"), bbox_inches="tight")
     plt.close()
 
 
 def fig_serie_por_estacion(df: pd.DataFrame) -> None:
-    """Serie temporal de PM10 por estación."""
+    """Serie temporal de mediciones por estación."""
     plt.figure(figsize=(14, 6))
     for estacion in df["Estacion"].dropna().unique():
         subset = df[df["Estacion"] == estacion]
         plt.plot(subset["Fecha"], subset["Medicion"], label=estacion, alpha=0.7)
-    plt.title("Evolución temporal de mediciones PM10 por estación")
+    plt.title("Evolución temporal de mediciones por estación")
     plt.xlabel("Fecha")
     plt.ylabel("Medición (µg/m³)")
     plt.legend()
@@ -113,10 +113,10 @@ def fig_serie_por_estacion(df: pd.DataFrame) -> None:
 
 
 def fig_promedio_por_dia_semana(df: pd.DataFrame) -> None:
-    """Barras con promedio de PM10 por día de la semana (ordenado lun-dom)."""
+    """Barras con promedio de mediciones por día de la semana (ordenado lun-dom)."""
     plt.figure(figsize=(8, 5))
     (df.groupby("DiaSemana")["Medicion"].mean().reindex(DIAS_ORDEN)).plot(kind="bar")
-    plt.title("Promedio de mediciones PM10 por día de la semana")
+    plt.title("Promedio de mediciones por día de la semana")
     plt.ylabel("Medición promedio (µg/m³)")
     plt.xticks(rotation=45)
     plt.tight_layout()
@@ -125,10 +125,10 @@ def fig_promedio_por_dia_semana(df: pd.DataFrame) -> None:
 
 
 def fig_promedio_por_mes(df: pd.DataFrame) -> None:
-    """Barras con promedio de PM10 por mes (1..12)."""
+    """Barras con promedio de mediciones por mes (1..12)."""
     plt.figure(figsize=(8, 5))
     df.groupby("Mes")["Medicion"].mean().sort_index().plot(kind="bar")
-    plt.title("Promedio de mediciones PM10 por mes")
+    plt.title("Promedio de mediciones por mes")
     plt.ylabel("Medición promedio (µg/m³)")
     plt.xlabel("Mes")
     plt.xticks(rotation=0)
@@ -138,7 +138,7 @@ def fig_promedio_por_mes(df: pd.DataFrame) -> None:
 
 
 def fig_heatmap_mes_dia_semana(df: pd.DataFrame) -> None:
-    """Heatmap (imshow) con promedio de PM10 por (DíaSemana × Mes)."""
+    """Heatmap (imshow) con promedio de mediciones por (DíaSemana × Mes)."""
     pivot = df.pivot_table(
         values="Medicion", index="DiaSemana", columns="Mes", aggfunc="mean"
     )
@@ -146,7 +146,7 @@ def fig_heatmap_mes_dia_semana(df: pd.DataFrame) -> None:
     pivot = pivot.reindex(columns=sorted([c for c in pivot.columns if pd.notnull(c)]))
     plt.figure(figsize=(12, 6))
     plt.imshow(pivot.values, aspect="auto")
-    plt.title("Promedio PM10 por Día de la semana y Mes")
+    plt.title("Promedio mediciones por Día de la semana y Mes")
     plt.ylabel("Día de la semana")
     plt.xlabel("Mes")
     plt.yticks(ticks=np.arange(len(pivot.index)), labels=pivot.index)
@@ -158,10 +158,10 @@ def fig_heatmap_mes_dia_semana(df: pd.DataFrame) -> None:
 
 
 def fig_boxplot_por_mes(df: pd.DataFrame) -> None:
-    """Boxplot de PM10 por mes."""
+    """Boxplot de mediciones por mes."""
     plt.figure(figsize=(10, 6))
     df.boxplot(column="Medicion", by="Mes")
-    plt.title("Distribución de PM10 por Mes (Boxplot)")
+    plt.title("Distribución de mediciones por Mes (Boxplot)")
     plt.suptitle("")
     plt.xlabel("Mes")
     plt.ylabel("Medición (µg/m³)")
@@ -171,12 +171,12 @@ def fig_boxplot_por_mes(df: pd.DataFrame) -> None:
 
 
 def fig_boxplot_por_dia_semana(df: pd.DataFrame) -> None:
-    """Boxplot de PM10 por día de la semana (orden lun-dom)."""
+    """Boxplot de mediciones por día de la semana (orden lun-dom)."""
     df = df.copy()
     df["DiaSemana"] = pd.Categorical(df["DiaSemana"], categories=DIAS_ORDEN, ordered=True)
     plt.figure(figsize=(10, 6))
     df.boxplot(column="Medicion", by="DiaSemana")
-    plt.title("Distribución de PM10 por Día de la Semana (Boxplot)")
+    plt.title("Distribución de mediciones por Día de la Semana (Boxplot)")
     plt.suptitle("")
     plt.xlabel("Día de la semana")
     plt.ylabel("Medición (µg/m³)")
