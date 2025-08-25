@@ -71,7 +71,7 @@ Licencia de datos: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0
 
 ##  Instalación y uso
 
-Proyecto probado en Python 3.12
+Proyecto probado en Python 3.9.6
 
 1. Clonar el repositorio:
    ```bash
