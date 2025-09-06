@@ -25,3 +25,13 @@ __pycache__/
 data/processed/*
 !data/processed/*.dvc
 !data/processed/.gitkeep
+
+# Archivos de configuración de IDE
+.idea/
+.vscode/
+
+# Carpeta de Tox
+.tox/
+
+.env
+reports/figures/*
