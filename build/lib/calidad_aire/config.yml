@@ -1,0 +1,27 @@
+data_file: Calidad_del_Aire_enriquecido.csv
+
+# --- Variables ---
+target: 'Medicion'
+features:
+  - 'Municipio'
+  - 'Estacion'
+  - 'Año'
+  - 'Mes'
+  - 'Dia'
+  - 'DiaSemana'
+categorical_features:
+  - 'Municipio'
+  - 'Estacion'
+  - 'DiaSemana'
+
+# --- Parámetros de división de datos ---
+test_size: 0.2
+random_state: 42
+
+# --- Parámetros del modelo RandomForest ---
+n_estimators: 150
+max_depth: 15
+
+# --- Parámetros de MLflow ---
+mlflow_experiment_name: "Proyeccion_Calidad_Aire_Risaralda"
+mlflow_tracking_uri: "http://52.23.182.67:5000"
