@@ -38,11 +38,26 @@ async def predict(input_data: schemas.MultipleDataInputs) -> Any:
 
     logger.info(f"Making prediction on inputs: {input_data.inputs}")
     results = make_prediction(input_data=input_df.replace({np.nan: None}),run_id=MLFLOW_RUN_ID)
-    
-    if results["errors"] is not None:
-        logger.warning(f"Prediction validation error: {results.get('errors')}")
-        raise HTTPException(status_code=400, detail=json.loads(results["errors"]))
+    errors = results.get("errors")
+    if errors:
+        # Acepta dict/list directo
+        if isinstance(errors, (dict, list)):
+            raise HTTPException(status_code=400, detail=errors)
 
+        # Si es string, intenta parsear; si falla, devuélvelo como texto
+        if isinstance(errors, str):
+            s = errors.strip()
+            if s.lower() in ("none", "null", ""):
+                raise HTTPException(status_code=400, detail="Unknown validation error")
+            try:
+                raise HTTPException(status_code=400, detail=json.loads(s))
+            except Exception:
+                raise HTTPException(status_code=400, detail=s)
+    
     logger.info(f"Prediction results: {results.get('predictions')}")
 
-    return results
+    # Si no hay errores, devuelve predicciones
+    return {
+        "predictions": results.get("predictions"),
+        "version": results.get("version"),
+    }
