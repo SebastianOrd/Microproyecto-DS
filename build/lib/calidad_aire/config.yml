@@ -2,6 +2,7 @@ data_file: Calidad_del_Aire_enriquecido.csv
 
 # --- Variables ---
 target: 'Medicion'
+model_name: "XGBoost"
 features:
   - 'Municipio'
   - 'Estacion'
@@ -19,8 +20,8 @@ test_size: 0.2
 random_state: 42
 
 # --- Parámetros del modelo RandomForest ---
-n_estimators: 150
-max_depth: 15
+n_estimators: 250
+max_depth: 10
 
 # --- Parámetros de MLflow ---
 mlflow_experiment_name: "Proyeccion_Calidad_Aire_Risaralda"

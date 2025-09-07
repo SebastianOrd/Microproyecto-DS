@@ -2,6 +2,7 @@ data_file: Calidad_del_Aire_enriquecido.csv
 
 # --- Variables ---
 target: 'Medicion'
+model_name: "SVR"
 features:
   - 'Municipio'
   - 'Estacion'
@@ -9,6 +10,14 @@ features:
   - 'Mes'
   - 'Dia'
   - 'DiaSemana'
+  - 'dia_del_anio'
+  - 'semana_del_anio'
+  - 'es_fin_de_semana'
+  - 'mes_sin'
+  - 'mes_cos'
+  - 'dia_sin'
+  - 'dia_cos'
+
 categorical_features:
   - 'Municipio'
   - 'Estacion'
@@ -19,8 +28,16 @@ test_size: 0.2
 random_state: 42
 
 # --- Parámetros del modelo RandomForest ---
-n_estimators: 150
+n_estimators: 300
 max_depth: 15
+
+# Parámetros específicos para ElasticNet
+alpha: 0.01
+l1_ratio: 1.0 
+
+# Parámetros específicos para SVR
+C: 15
+gamma: 'auto'
 
 # --- Parámetros de MLflow ---
 mlflow_experiment_name: "Proyeccion_Calidad_Aire_Risaralda"

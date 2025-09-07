@@ -9,17 +9,9 @@ from calidad_aire.pipeline import air_quality_pipe
 
 def run_training():
     """
-    Orquesta el proceso completo de entrenamiento del modelo:
-    1. Carga los datos.
-    2. Divide los datos para entrenamiento y prueba.
-    3. Se conecta y configura MLflow.
-    4. Entrena el pipeline del modelo.
-    5. Evalúa el rendimiento.
-    6. Registra parámetros, métricas y el modelo en MLflow,
-       incluyendo el registro en el Model Registry.
+    Orquesta el proceso completo de entrenamiento del modelo.
     """
-    
-    load_dotenv() 
+    load_dotenv()
     mlflow.set_tracking_uri(config.mlflow_tracking_uri)
     mlflow.set_experiment(config.mlflow_experiment_name)
     
@@ -32,7 +24,8 @@ def run_training():
     y_train, y_test = y.iloc[:split_index], y.iloc[split_index:]
     
     with mlflow.start_run() as run:
-        print(f"Iniciando corrida de MLflow: {run.info.run_name}")
+
+        print(f"Iniciando corrida de MLflow: {run.info.run_id}")
         
         air_quality_pipe.fit(X_train, y_train)
         
@@ -46,15 +39,13 @@ def run_training():
         print(f"  MAE: {mae:.4f}")
         print(f"  R2 Score: {r2:.4f}")
         
-        mlflow.log_params(config.model_dump()) 
-        
+        mlflow.log_params(config.model_dump())
         mlflow.log_metrics({'rmse': rmse, 'mae': mae, 'r2': r2})
-        
         mlflow.sklearn.log_model(
             sk_model=air_quality_pipe,
             artifact_path="model",
             input_example=X_train.head(1),
-            registered_model_name="CalidadAireRisaraldaModel" 
+            #registered_model_name="CalidadAireRisaraldaModel"
         )
         
         print("Modelo registrado en MLflow exitosamente.")

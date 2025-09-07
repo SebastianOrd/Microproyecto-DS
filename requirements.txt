@@ -211,3 +211,5 @@ python-dotenv
 dvc[s3]
 matplotlib
 protobuf==3.20.0
+lightgbm 
+xgboost

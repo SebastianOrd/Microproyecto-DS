@@ -10,6 +10,7 @@ DATA_DIR = ROOT_DIR / 'data' / 'processed'
 CONFIG_FILE_PATH = CONFIG_DIR / 'config.yml'
 
 class AppConfig(BaseModel):
+    model_name: str
     data_file: str
     target: str
     features: List[str]
@@ -20,6 +21,10 @@ class AppConfig(BaseModel):
     max_depth: int
     mlflow_experiment_name: str
     mlflow_tracking_uri: str
+    alpha: float = 1.0
+    l1_ratio: float = 0.5
+    C: float = 1.0
+    gamma: str = 'scale'
 
 def find_config_file() -> Path:
     if CONFIG_FILE_PATH.is_file():
