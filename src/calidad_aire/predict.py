@@ -2,7 +2,7 @@ import pandas as pd
 import mlflow
 from dotenv import load_dotenv
 
-from config.core import config
+from calidad_aire.config.core import config
 
 def make_prediction(*, input_data: pd.DataFrame, run_id: str) -> dict:
     """
