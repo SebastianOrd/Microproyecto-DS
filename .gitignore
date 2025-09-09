@@ -20,8 +20,19 @@ __pycache__/
 # Archivos de DVC
 .dvc/tmp/
 .dvc/cache/
+.dvc/config.local
 
 # Archivos de datos procesados (mantener solo los .dvc)
 data/processed/*
 !data/processed/*.dvc
 !data/processed/.gitkeep
+
+# Archivos de configuración de IDE
+.idea/
+.vscode/
+
+# Carpeta de Tox
+.tox/
+
+.env
+reports/figures/*

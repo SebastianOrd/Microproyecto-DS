@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 
 # Rutas base
 BASE = os.path.dirname(os.path.dirname(__file__))
-RAW = os.path.join(BASE, "data", "raw", "Calidad_del_Aire_20250814.csv")
+RAW = os.path.join(BASE, "data", "raw", "Calidad_del_Aire_20250905.csv")
 PROCESSED = os.path.join(BASE, "data", "processed", "Calidad_del_Aire_enriquecido.csv")
 REPORTS = os.path.join(BASE, "reports")
 FIGS = os.path.join(REPORTS, "figures")
