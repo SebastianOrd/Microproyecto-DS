@@ -7,7 +7,23 @@ from loguru import logger
 
 from app_api.api import api_router
 from app_api.config import settings, setup_app_logging
+import os
+import mlflow
+from dotenv import load_dotenv
 
+# Cargar variables de entorno de Railway (o de un .env en local)
+load_dotenv()
+
+# Configuración explícita de MLflow
+mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI"))
+
+# Si usas usuario y contraseña
+if os.getenv("MLFLOW_TRACKING_USERNAME") and os.getenv("MLFLOW_TRACKING_PASSWORD"):
+    os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv("MLFLOW_TRACKING_USERNAME")
+    os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv("MLFLOW_TRACKING_PASSWORD")
+
+# Si en vez de eso usas token:
+# os.environ["MLFLOW_TRACKING_TOKEN"] = os.getenv("MLFLOW_TRACKING_TOKEN", "")
 # setup logging as early as possible
 setup_app_logging(config=settings)
 
