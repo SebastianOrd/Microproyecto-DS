@@ -10,9 +10,9 @@ RUN pip install --upgrade pip -v \
  && pip install --no-cache-dir -r /tmp/reqs.txt -v
 
 # Copiamos solo lo necesario para el dashboard
-# (si tu dashboard lee archivos de /data, descomenta la línea de data)
-COPY app/ /srv/app/
-# COPY data/ /srv/data/
+
+COPY . /srv/app/
+WORKDIR /srv/app
 
 # Streamlit respetará PORT que inyecte Railway / el run local
 ENV PORT=8501
