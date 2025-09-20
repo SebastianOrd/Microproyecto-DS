@@ -18,4 +18,4 @@ ENV PORT=8501
 EXPOSE 8501
 
 # La URL de la API la pasaremos por env en runtime (API_URL)
-CMD ["sh", "-c", "streamlit run app/app_streamlit.py --server.address 0.0.0.0 --server.port ${PORT}"]
+CMD ["sh", "-c", "streamlit run app_streamlit.py --server.address 0.0.0.0 --server.port ${PORT}"]
