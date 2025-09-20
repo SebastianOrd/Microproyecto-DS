@@ -70,8 +70,8 @@ Microproyecto-DS/
 │   ├──XGB vs ELASTIC.py         #Comparacion especifica de modelos en Mlflow
 │
 ├── src/
-│   ├── eda.py                   # Script principal en python
-│   └── calidad_aire/            # Paquete con pipelines de entrenamiento
+│   ├── eda.py                   # Script EDA en python
+│   └── calidad_aire/            # Paquete con pipelines de entrenamiento para buid
 │       ├── train_pipeline.py
 │       ├── processing/
 │       └── config/
