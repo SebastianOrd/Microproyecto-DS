@@ -3,9 +3,11 @@ from typing import List
 import yaml
 from pydantic import BaseModel
 
-CONFIG_FILE_PATH = Path(__file__).parent.parent / "config.yml"
-ROOT_DIR = CONFIG_FILE_PATH.parent.parent.parent.parent
+ROOT_DIR = Path.cwd() 
+
+CONFIG_DIR = ROOT_DIR / 'src' / 'calidad_aire'
 DATA_DIR = ROOT_DIR / 'data' / 'processed'
+CONFIG_FILE_PATH = CONFIG_DIR / 'config.yml'
 
 class AppConfig(BaseModel):
     data_file: str
@@ -27,8 +29,8 @@ def find_config_file() -> Path:
 def fetch_config_from_yaml(cfg_path: Path = None) -> dict:
     if not cfg_path:
         cfg_path = find_config_file()
-    
-    with open(cfg_path, 'r') as conf_file:
+
+    with open(cfg_path, 'r', encoding="utf-8") as conf_file:
         return yaml.safe_load(conf_file)
 
 def create_and_validate_config(parsed_config: dict = None) -> AppConfig:

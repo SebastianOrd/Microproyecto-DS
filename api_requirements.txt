@@ -1,4 +1,4 @@
-./dist/calidad_aire_model-0.1.0-py3-none-any.whl
+/app/dist/calidad_aire_model-0.2.0-py3-none-any.whl
 uvicorn>=0.20.0,<0.30.0
 fastapi>=0.88.0,<1.0.0
 python-multipart>=0.0.5,<0.1.0
