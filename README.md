@@ -41,37 +41,73 @@ Licencia de datos: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0
 ## Estructura del repositorio
 
 ```
-├──data/
-│   ├── raw/                  # Datos originales (solo lectura)
-│   ├── processed/            # Datos enriquecidos/intermedios
+Microproyecto-DS/
+├── .circleci/
+│   └── config.yml               # Configuración de CI/CD con CircleCI
+├── .dvc/                        # Metadata de DVC
+├── .tox/                        # Entornos tox
+├── .venv/                       # Virtualenv (ignorado en git)
+│
+├── app/                         # Dashboard con Streamlit
+│   ├── app_streamlit.py
+│   ├── Dockerfile               # Dockerfile específico del dashboard
+│   └── requirements_dashboard.txt
+│
+├── app_api/                     # API con FastAPI
+│   ├── main.py
+│   └── api_requirements.txt
+│
+├── build/                       # Builds temporales (wheel, sdist)
+├── dist/                        # Distribuciones empaquetadas (.tar.gz, .whl)
+│
+├── data/
+│   ├── raw/                     # Datos originales (solo lectura)
+│   ├── processed/               # Datos enriquecidos/intermedios
+│
 ├── notebooks/
-│   ├── 01_eda.ipynb      # EDA principal con gráficas + resúmenes
+│   ├── 01_eda.ipynb             # EDA principal con gráficas + resúmenes
+│   ├──compare_models_mlflow.py  #Grid de comparacion de diferentes modelos en MLflow
+│   ├──XGB vs ELASTIC.py         #Comparacion especifica de modelos en Mlflow
+│
 ├── src/
-│   ├── eda.py            # Script principal en python
+│   ├── eda.py                   # Script principal en python
+│   └── calidad_aire/            # Paquete con pipelines de entrenamiento
+│       ├── train_pipeline.py
+│       ├── processing/
+│       └── config/
+│
 ├── reports/
-│   ├── figures/          # Imágenes exportadas
+│   ├── figures/                 # Imágenes exportadas
 │   ├── resumen_por_municipio.csv
 │   └── resumen_por_estacion.csv
+│
 ├── docs/
-│   ├── EDA_resumen.md    # Hallazgos y notas de análisis EDA
-|   ├── contexto_alcance  # objetivos y alcance proyecto
-|   ├── Entrega_1.docx    #Documento de la primera entrega de la materia
+│   ├── Entrega_1.docx           # Documento de la primera entrega
+│   └── Entraga_2.docx           # Documento de la segunda entrega
+│
+├── .dvcignore
+├── .env                         # Variables de entorno (no subir a git)
 ├── .gitignore
-├── requirements.txt      # Dependencias mínimas
-└── README.md             # Este archivo
+├── Dockerfile                   # Dockerfile raíz (API por defecto)
+├── MANIFEST.in
+├── model_requirements.txt       # Dependencias específicas para entrenamiento
+├── requirements.txt             # Dependencias mínimas generales
+├── README.md                    # Descripción del proyecto
+├── setup.py                     # Script de instalación
+└── tox.ini                      # Configuración de tox
 ```
 
 ---
 ## Requisitos
 
-- Python 3.9.6
+- Python 3.13.7
 - Git
-- DVC (con soporte para S3)
+- DVC (con soporte para S3 y credenciales de conexion)
 - AWS CLI configurado
 
 ##  Instalación y uso
 
-Proyecto probado en Python 3.9.6
+Proyecto probado en Python 3.13.7
 
 1. Clonar el repositorio:
    ```bash
