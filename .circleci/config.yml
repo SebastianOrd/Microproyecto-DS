@@ -16,6 +16,7 @@ prepare_venv: &prepare_venv
       pip install --upgrade pip
 
 jobs:
+  # === API ===
   deploy_app_to_railway:
     <<: *defaults
     steps:
@@ -29,8 +30,24 @@ jobs:
           name: Deploy to Railway App
           command: |
             railway up --service=acceptable-amazement --detach || true
-            echo "Deploy completo"
-
+            echo "Deploy API completo"
+  # === DASHBOARD ===
+  deploy_dashboard_to_railway:
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/project/
+      - node/install:
+          node-version: '20.9'
+      - run: node --version
+      - run: npm i -g @railway/cli
+      - run:
+          name: Deploy Dashboard to Railway
+          command: |
+            # IMPORTANTE: en Railway (servicio dashboard) deja configurado:
+            # Build type = Dockerfile, Dockerfile path = app/Dockerfile
+            railway up --humble-freedom --detach || true
+            echo "Deploy Dashboard completo"
 
 tags_only: &tags_only
   filters:
@@ -44,6 +61,13 @@ workflows:
   deploy_pipeline:
     jobs:
       - deploy_app_to_railway:
+          filters:
+            branches:
+              only:
+                - main
+      - deploy_dashboard_to_railway:
+          requires:
+            - deploy_app_to_railway      # dependencia
           filters:
             branches:
               only:
