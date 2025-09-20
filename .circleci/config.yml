@@ -44,9 +44,7 @@ jobs:
       - run:
           name: Deploy Dashboard to Railway
           command: |
-            # IMPORTANTE: en Railway (servicio dashboard) deja configurado:
-            # Build type = Dockerfile, Dockerfile path = app/Dockerfile
-            railway up --humble-freedom --detach || true
+            railway up --service=humble-freedom --detach || true
             echo "Deploy Dashboard completo"
 
 tags_only: &tags_only
