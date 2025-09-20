@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 
 #Configuración inicial
-API_URL = "http://127.0.0.1:8001/api/v1/predict"
+API_URL = "https://acceptable-amazement-production.up.railway.app/api/v1/predict"
 
 st.set_page_config(
     page_title="Dashboard de Calidad del Aire",
