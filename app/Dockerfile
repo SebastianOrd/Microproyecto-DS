@@ -2,17 +2,16 @@
 FROM python:3.13-slim
 
 ENV PYTHONUNBUFFERED=1
-WORKDIR /srv
+WORKDIR /srv/app
 
 # Instala dependencias del dashboard (archivo dentro de /app)
-COPY app/requirements_dashboard.txt /tmp/reqs.txt
+COPY requirements_dashboard.txt /tmp/requirements.txt
 RUN pip install --upgrade pip -v \
- && pip install --no-cache-dir -r /tmp/reqs.txt -v
+ && pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Copiamos solo lo necesario para el dashboard
 
 COPY . /srv/app/
-WORKDIR /srv/app
 
 # Streamlit respetará PORT que inyecte Railway / el run local
 ENV PORT=8501
