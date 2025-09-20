@@ -28,7 +28,6 @@ jobs:
       - run:
           name: Deploy to Railway App
           command: |
-            cd bankchurn-api 
             railway up --service=acceptable-amazement
             railway up --detach
 
